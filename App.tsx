@@ -1,27 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello, NLW</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { useFonts } from 'expo-font';
+import {
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+} from '@expo-google-fonts/nunito';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#121214',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+import Routes from './src/route';
 
-  title: {
-    color: '#FFF',
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
-});
+const App: React.FC = () => {
+  const [fontsLoaded] = useFonts({
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return <Routes />;
+};
+
+export default App;
