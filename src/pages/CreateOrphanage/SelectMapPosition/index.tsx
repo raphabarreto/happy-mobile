@@ -13,9 +13,9 @@ const SelectMapPosition: React.FC = () => {
   const navigation = useNavigation();
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
-  function handleNextStep() {
+  const handleNextStep = useCallback(() => {
     navigation.navigate('OrphanageData', { position });
-  }
+  }, [navigation, position]);
 
   const handleSelectMapPosition = useCallback((event: MapEvent) => {
     setPosition(event.nativeEvent.coordinate);
@@ -25,8 +25,8 @@ const SelectMapPosition: React.FC = () => {
     <View style={styles.container}>
       <MapView
         initialRegion={{
-          latitude: -27.2092052,
-          longitude: -49.6401092,
+          latitude: -23.4979328,
+          longitude: -46.6681856,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
